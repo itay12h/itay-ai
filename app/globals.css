@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-instrument-serif);
+
+  /* Core palette */
+  --color-background: #fffcfa;
+  --color-surface: #f7f5f2;
+  --color-surface-elevated: #efece8;
+  --color-foreground: #1c1917;
+  --color-muted: #78716c;
+  --color-accent: #c4653a;
+  --color-accent-hover: #a8532e;
+  --color-accent-light: #c4653a14;
+  --color-border: #00000014;
+
+  /* Spacing / radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  tab-size: 4;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+}
+
+/* Dot grid background pattern */
+.dot-grid {
+  background-image: radial-gradient(circle, #1c191710 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Checkered / grid background pattern */
+.check-grid {
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.055) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Glow blobs */
+.blob-accent {
+  background: radial-gradient(ellipse at center, #c4653a18 0%, transparent 70%);
+}
+
+/* Code cursor blink */
+@keyframes cursor-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+.cursor-blink {
+  animation: cursor-blink 1s step-end infinite;
+}
+
+/* Service card hover lift */
+.service-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.service-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.08);
+  border-color: rgba(196, 101, 58, 0.3) !important;
+}
+
+/* Nav link hover */
+.nav-link {
+  transition: color 0.15s ease;
+}
+.nav-link:hover {
+  color: var(--color-foreground) !important;
+}
+
+/* Smooth section anchor offset */
+[id] {
+  scroll-margin-top: 80px;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-surface);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-surface-elevated);
+  border-radius: 3px;
+}
