@@ -86,10 +86,10 @@ function WorkflowMockup() {
 
 function RoadmapMockup() {
   const phases = [
-    { label: "Phase 1 — Audit", week: "Week 1–2", pct: 100 },
-    { label: "Phase 2 — Quick Wins", week: "Week 3–4", pct: 72 },
-    { label: "Phase 3 — Core Build", week: "Week 5–10", pct: 40 },
-    { label: "Phase 4 — Scale", week: "Week 11–12", pct: 12 },
+    { label: "Phase 1: Audit", week: "Week 1-2", pct: 100 },
+    { label: "Phase 2: Quick Wins", week: "Week 3-4", pct: 72 },
+    { label: "Phase 3: Core Build", week: "Week 5-10", pct: 40 },
+    { label: "Phase 4: Scale", week: "Week 11-12", pct: 12 },
   ];
   return (
     <div
@@ -198,7 +198,7 @@ export default function Services() {
             How I help
           </h2>
           <p className="max-w-sm text-base" style={{ color: "var(--color-muted)" }}>
-            End-to-end AI automation — from finding the right problems to shipping the solution.
+            End-to-end AI automation, from finding the right problems to shipping the solution.
           </p>
         </div>
 
@@ -222,8 +222,7 @@ export default function Services() {
                   AI Agents
                 </h3>
                 <p className="text-sm leading-relaxed" style={{ color: "var(--color-muted)" }}>
-                  Custom autonomous agents that handle your busywork — from lead gen to
-                  customer support — so you can focus on growth.
+                  Custom autonomous agents that handle your busywork: lead gen, customer support, research. You focus on growth.
                 </p>
               </div>
               <div className="w-full lg:flex-1">
@@ -289,38 +288,75 @@ export default function Services() {
             </div>
           </div>
 
-          {/* CTA card */}
+          {/* Mentorship */}
           <div
-            className="flex flex-col items-start justify-between gap-6 rounded-2xl border p-8"
+            className="flex flex-col justify-between gap-6 rounded-2xl border p-8"
             style={{
-              background: "var(--color-surface-elevated)",
+              background: "var(--color-background)",
               borderColor: "var(--color-border)",
             }}
           >
-            <p
-              className="text-sm font-medium leading-relaxed"
-              style={{ color: "var(--color-muted)" }}
+            <div
+              className="w-full rounded-xl border p-4 flex flex-col gap-3"
+              style={{ background: "var(--color-surface)", borderColor: "var(--color-border)" }}
             >
-              Not sure where to start? We&apos;ll figure out the right fit together — no sales pitch.
-            </p>
-            <a
-              href="https://cal.com/%D7%90%D7%99%D7%AA%D7%99-%D7%97%D7%9B%D7%9E%D7%95%D7%9F-wvqsrq/30min"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center rounded-lg px-5 py-2.5 text-sm font-semibold text-white transition-colors duration-150"
-              style={{ background: "var(--color-accent)" }}
-              onMouseEnter={(e) =>
-                ((e.currentTarget as HTMLAnchorElement).style.background =
-                  "var(--color-accent-hover)")
-              }
-              onMouseLeave={(e) =>
-                ((e.currentTarget as HTMLAnchorElement).style.background =
-                  "var(--color-accent)")
-              }
-            >
-              Book a free call →
-            </a>
+              <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: "var(--color-accent)" }}>
+                Session recap
+              </span>
+              {["Build your first AI agent", "Connect it to your CRM", "Deploy and monitor"].map((step, i) => (
+                <div key={step} className="flex items-center gap-3">
+                  <span
+                    className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold text-white"
+                    style={{ background: i < 2 ? "var(--color-accent)" : "var(--color-surface-elevated)", color: i < 2 ? "#fff" : "var(--color-muted)" }}
+                  >
+                    {i < 2 ? "✓" : String(i + 1)}
+                  </span>
+                  <span className="text-xs" style={{ color: i < 2 ? "var(--color-foreground)" : "var(--color-muted)" }}>
+                    {step}
+                  </span>
+                </div>
+              ))}
+            </div>
+            <div className="flex flex-col gap-2">
+              <h3 className="text-lg font-semibold" style={{ color: "var(--color-foreground)" }}>
+                Mentorship &amp; Training
+              </h3>
+              <p className="text-sm leading-relaxed" style={{ color: "var(--color-muted)" }}>
+                Hands-on sessions where you build real things. Zero fluff, only skills you can use tomorrow.
+              </p>
+            </div>
           </div>
+
+        </div>
+
+        {/* CTA strip */}
+        <div
+          className="mt-4 flex flex-col items-start justify-between gap-4 rounded-2xl border px-8 py-6 sm:flex-row sm:items-center"
+          style={{
+            background: "var(--color-surface-elevated)",
+            borderColor: "var(--color-border)",
+          }}
+        >
+          <p className="text-sm font-medium" style={{ color: "var(--color-muted)" }}>
+            Not sure where to start? We&apos;ll figure out the right fit together, no sales pitch.
+          </p>
+          <a
+            href="https://cal.com/%D7%90%D7%99%D7%AA%D7%99-%D7%97%D7%9B%D7%9E%D7%95%D7%9F-wvqsrq/30min"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex shrink-0 items-center rounded-lg px-5 py-2.5 text-sm font-semibold text-white transition-colors duration-150"
+            style={{ background: "var(--color-accent)" }}
+            onMouseEnter={(e) =>
+              ((e.currentTarget as HTMLAnchorElement).style.background =
+                "var(--color-accent-hover)")
+            }
+            onMouseLeave={(e) =>
+              ((e.currentTarget as HTMLAnchorElement).style.background =
+                "var(--color-accent)")
+            }
+          >
+            Book a free call
+          </a>
         </div>
       </div>
 
