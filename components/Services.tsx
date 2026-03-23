@@ -190,16 +190,13 @@ export default function Services() {
         </div>
 
         {/* Heading */}
-        <div className="mb-16 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+        <div className="mb-16">
           <h2
             className="text-4xl font-bold tracking-tight md:text-5xl"
             style={{ color: "var(--color-foreground)" }}
           >
             How I help
           </h2>
-          <p className="max-w-sm text-base" style={{ color: "var(--color-muted)" }}>
-            End-to-end AI automation, from finding the right problems to shipping the solution.
-          </p>
         </div>
 
         {/* Bento grid */}
@@ -297,17 +294,25 @@ export default function Services() {
             }}
           >
             <div
-              className="w-full rounded-xl border p-4 flex flex-col gap-3"
+              className="flex-1 w-full rounded-xl border p-5 flex flex-col gap-4"
               style={{ background: "var(--color-surface)", borderColor: "var(--color-border)" }}
             >
               <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: "var(--color-accent)" }}>
                 Session recap
               </span>
-              {["Build your first AI agent", "Connect it to your CRM", "Deploy and monitor"].map((step, i) => (
+              {[
+                "Build your first AI agent",
+                "Connect it to your CRM",
+                "Deploy and monitor",
+                "Iterate and scale",
+              ].map((step, i) => (
                 <div key={step} className="flex items-center gap-3">
                   <span
-                    className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold text-white"
-                    style={{ background: i < 2 ? "var(--color-accent)" : "var(--color-surface-elevated)", color: i < 2 ? "#fff" : "var(--color-muted)" }}
+                    className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-bold"
+                    style={{
+                      background: i < 2 ? "var(--color-accent)" : "var(--color-surface-elevated)",
+                      color: i < 2 ? "#fff" : "var(--color-muted)",
+                    }}
                   >
                     {i < 2 ? "✓" : String(i + 1)}
                   </span>
