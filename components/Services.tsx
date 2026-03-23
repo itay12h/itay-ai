@@ -1,51 +1,175 @@
 "use client";
 
-import { Zap, Bot, Brain, GraduationCap, Wrench } from "lucide-react";
+/* ─── Visual mockups ──────────────────────────────────────────────── */
 
-const services = [
-  {
-    icon: Zap,
-    title: "N8N Workflow Automation",
-    description:
-      "Wire up automations that run while you sleep — lead capture, CRM updates, reports, and notifications. Clients reclaim 20–40 hrs/week.",
-    tags: ["n8n", "Make", "Zapier"],
-    hero: true,
-  },
-  {
-    icon: Bot,
-    title: "AI Agents",
-    description:
-      "Autonomous agents that handle email, research, and customer support 24/7. No downtime, no sick days.",
-    hero: false,
-  },
-  {
-    icon: Brain,
-    title: "AI Strategy & Consulting",
-    description:
-      "One focused session to map your stack and pinpoint exactly where AI generates real ROI.",
-    hero: false,
-  },
-  {
-    icon: GraduationCap,
-    title: "Mentorship & Training",
-    description:
-      "Hands-on sessions where you build real things. Zero fluff — only skills you can use tomorrow.",
-    hero: false,
-  },
-  {
-    icon: Wrench,
-    title: "Custom AI Solutions",
-    description:
-      "If you can describe the problem, I can automate it. Purpose-built for workflows nothing off-the-shelf covers.",
-    hero: false,
-  },
-];
+function AgentMockup() {
+  return (
+    <div
+      className="w-full rounded-xl border p-4 flex flex-col gap-3"
+      style={{ background: "var(--color-surface)", borderColor: "var(--color-border)" }}
+    >
+      <div className="flex items-start gap-3">
+        <span
+          className="mt-1 h-2.5 w-2.5 shrink-0 rounded-full"
+          style={{ background: "var(--color-accent)" }}
+        />
+        <span className="text-xs" style={{ color: "var(--color-foreground)" }}>
+          Found 14 new leads matching your ICP
+        </span>
+      </div>
+      <div className="self-end">
+        <span
+          className="rounded-lg px-3 py-1.5 text-xs font-semibold text-white"
+          style={{ background: "var(--color-accent)" }}
+        >
+          Enrich and add to CRM sequence
+        </span>
+      </div>
+      <div className="flex items-start gap-3">
+        <span
+          className="mt-1 h-2.5 w-2.5 shrink-0 rounded-full"
+          style={{ background: "var(--color-accent)" }}
+        />
+        <span className="text-xs" style={{ color: "var(--color-foreground)" }}>
+          Done. 14 contacts enriched, emails drafted.
+        </span>
+      </div>
+      <div className="flex gap-1 pl-5">
+        <span className="h-1.5 w-1.5 rounded-full" style={{ background: "var(--color-muted)", opacity: 0.4 }} />
+        <span className="h-1.5 w-1.5 rounded-full" style={{ background: "var(--color-muted)", opacity: 0.4 }} />
+        <span className="h-1.5 w-1.5 rounded-full" style={{ background: "var(--color-muted)", opacity: 0.4 }} />
+      </div>
+    </div>
+  );
+}
+
+function WorkflowMockup() {
+  const nodes = [
+    { label: "Webhook", color: "#4ade80" },
+    { label: "Filter", color: "#a78bfa" },
+    { label: "Slack", color: "#38bdf8" },
+    { label: "Sheets", color: "#fb923c" },
+  ];
+  return (
+    <div
+      className="w-full rounded-xl border p-4"
+      style={{ background: "var(--color-surface)", borderColor: "var(--color-border)" }}
+    >
+      <div className="flex items-center gap-2 flex-wrap">
+        {nodes.map((node, i) => (
+          <div key={node.label} className="flex items-center gap-2">
+            <div className="flex flex-col items-center gap-1.5">
+              <div
+                className="flex h-9 w-9 items-center justify-center rounded-xl border"
+                style={{ background: "var(--color-background)", borderColor: "var(--color-border)" }}
+              >
+                <span
+                  className="h-3 w-3 rounded-full"
+                  style={{ background: node.color }}
+                />
+              </div>
+              <span className="text-xs" style={{ color: "var(--color-muted)" }}>
+                {node.label}
+              </span>
+            </div>
+            {i < nodes.length - 1 && (
+              <span className="mb-4 text-xs" style={{ color: "var(--color-border)" }}>
+                →
+              </span>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function RoadmapMockup() {
+  const phases = [
+    { label: "Phase 1 — Audit", week: "Week 1–2", pct: 100 },
+    { label: "Phase 2 — Quick Wins", week: "Week 3–4", pct: 72 },
+    { label: "Phase 3 — Core Build", week: "Week 5–10", pct: 40 },
+    { label: "Phase 4 — Scale", week: "Week 11–12", pct: 12 },
+  ];
+  return (
+    <div
+      className="w-full rounded-xl border p-4 flex flex-col gap-3"
+      style={{ background: "var(--color-surface)", borderColor: "var(--color-border)" }}
+    >
+      <span
+        className="text-xs font-semibold uppercase tracking-widest"
+        style={{ color: "var(--color-accent)" }}
+      >
+        Implementation Roadmap
+      </span>
+      {phases.map((p) => (
+        <div key={p.label} className="flex flex-col gap-1">
+          <div className="flex justify-between">
+            <span className="text-xs" style={{ color: "var(--color-foreground)" }}>
+              {p.label}
+            </span>
+            <span className="text-xs" style={{ color: "var(--color-muted)" }}>
+              {p.week}
+            </span>
+          </div>
+          <div
+            className="h-1.5 w-full overflow-hidden rounded-full"
+            style={{ background: "var(--color-border)" }}
+          >
+            <div
+              className="h-full rounded-full"
+              style={{ width: `${p.pct}%`, background: "var(--color-accent)" }}
+            />
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function SearchMockup() {
+  return (
+    <div
+      className="w-full rounded-xl border p-4 flex flex-col gap-3"
+      style={{ background: "var(--color-surface)", borderColor: "var(--color-border)" }}
+    >
+      <div
+        className="flex items-center gap-2 rounded-lg border px-3 py-2"
+        style={{ background: "var(--color-background)", borderColor: "var(--color-border)" }}
+      >
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ color: "var(--color-muted)" }}>
+          <circle cx="11" cy="11" r="8" /><path d="m21 21-4.35-4.35" />
+        </svg>
+        <span className="text-xs" style={{ color: "var(--color-muted)" }}>
+          What&apos;s the refund policy for enterprise?
+        </span>
+      </div>
+      <div className="flex gap-2">
+        {["terms.pdf", "faq.md", "policy.pdf"].map((f) => (
+          <div
+            key={f}
+            className="flex flex-col items-center gap-1 rounded-lg border px-2 py-1.5"
+            style={{ background: "var(--color-background)", borderColor: "var(--color-border)" }}
+          >
+            <div
+              className="h-5 w-4 rounded-sm"
+              style={{ background: f === "policy.pdf" ? "var(--color-accent)" : "var(--color-surface-elevated)" }}
+            />
+            <span className="text-xs" style={{ color: "var(--color-muted)" }}>{f}</span>
+          </div>
+        ))}
+      </div>
+      <p className="text-xs leading-relaxed" style={{ color: "var(--color-foreground)" }}>
+        Enterprise refunds are processed within 30 days. Full details in{" "}
+        <span style={{ color: "var(--color-accent)" }}>policy.pdf</span> section 4.2…
+      </p>
+    </div>
+  );
+}
+
+/* ─── Section ─────────────────────────────────────────────────────── */
 
 export default function Services() {
-  const hero = services[0];
-  const HeroIcon = hero.icon;
-  const rest = services.slice(1);
-
   return (
     <section
       id="services"
@@ -81,139 +205,89 @@ export default function Services() {
         {/* Bento grid */}
         <div className="grid gap-4 lg:grid-cols-3">
 
-          {/* Hero card — spans 2 cols on lg */}
+          {/* Hero — AI Agents, spans 2 cols */}
           <div
-            className="group relative flex flex-col justify-between gap-8 overflow-hidden rounded-2xl border p-8 lg:col-span-2"
+            className="flex flex-col gap-6 overflow-hidden rounded-2xl border p-8 lg:col-span-2"
             style={{
-              background: "var(--color-accent-light)",
-              borderColor: "var(--color-accent)",
+              background: "var(--color-background)",
+              borderColor: "var(--color-border)",
             }}
           >
-            {/* Glow blob */}
-            <div
-              className="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full opacity-30"
-              style={{
-                background:
-                  "radial-gradient(ellipse at center, #c4653a55 0%, transparent 70%)",
-              }}
-            />
-
-            <div
-              className="flex h-11 w-11 items-center justify-center rounded-xl"
-              style={{ background: "var(--color-accent)", color: "#fff" }}
-            >
-              <HeroIcon size={22} />
-            </div>
-
-            <div className="flex flex-col gap-3">
-              <h3
-                className="text-2xl font-bold tracking-tight"
-                style={{ color: "var(--color-foreground)" }}
-              >
-                {hero.title}
-              </h3>
-              <p
-                className="text-base leading-relaxed"
-                style={{ color: "var(--color-muted)" }}
-              >
-                {hero.description}
-              </p>
-              {hero.tags && (
-                <div className="mt-1 flex flex-wrap gap-2">
-                  {hero.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-full border px-2.5 py-0.5 text-xs font-medium"
-                      style={{
-                        borderColor: "var(--color-accent)",
-                        color: "var(--color-accent)",
-                      }}
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              )}
+            <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:gap-10">
+              <div className="flex flex-col gap-4 lg:max-w-xs">
+                <h3
+                  className="text-2xl font-bold tracking-tight"
+                  style={{ color: "var(--color-foreground)" }}
+                >
+                  AI Agents
+                </h3>
+                <p className="text-sm leading-relaxed" style={{ color: "var(--color-muted)" }}>
+                  Custom autonomous agents that handle your busywork — from lead gen to
+                  customer support — so you can focus on growth.
+                </p>
+              </div>
+              <div className="w-full lg:flex-1">
+                <AgentMockup />
+              </div>
             </div>
           </div>
 
-          {/* Top-right card */}
-          {rest.slice(0, 1).map((s) => {
-            const Icon = s.icon;
-            return (
-              <div
-                key={s.title}
-                className="flex flex-col justify-between gap-8 rounded-2xl border p-8"
-                style={{
-                  background: "var(--color-background)",
-                  borderColor: "var(--color-border)",
-                }}
-              >
-                <div
-                  className="flex h-11 w-11 items-center justify-center rounded-xl"
-                  style={{
-                    background: "var(--color-surface-elevated)",
-                    color: "var(--color-accent)",
-                  }}
-                >
-                  <Icon size={22} />
-                </div>
-                <div className="flex flex-col gap-3">
-                  <h3
-                    className="text-lg font-semibold"
-                    style={{ color: "var(--color-foreground)" }}
-                  >
-                    {s.title}
-                  </h3>
-                  <p
-                    className="text-sm leading-relaxed"
-                    style={{ color: "var(--color-muted)" }}
-                  >
-                    {s.description}
-                  </p>
-                </div>
-              </div>
-            );
-          })}
+          {/* N8N Workflows */}
+          <div
+            className="flex flex-col justify-between gap-6 rounded-2xl border p-8"
+            style={{
+              background: "var(--color-background)",
+              borderColor: "var(--color-border)",
+            }}
+          >
+            <WorkflowMockup />
+            <div className="flex flex-col gap-2">
+              <h3 className="text-lg font-semibold" style={{ color: "var(--color-foreground)" }}>
+                n8n Workflows
+              </h3>
+              <p className="text-sm leading-relaxed" style={{ color: "var(--color-muted)" }}>
+                Automations connecting 400+ apps that save 10+ hours a week. No more manual data entry.
+              </p>
+            </div>
+          </div>
 
-          {/* Bottom row — 3 equal cards */}
-          {rest.slice(1).map((s) => {
-            const Icon = s.icon;
-            return (
-              <div
-                key={s.title}
-                className="flex flex-col gap-6 rounded-2xl border p-8"
-                style={{
-                  background: "var(--color-background)",
-                  borderColor: "var(--color-border)",
-                }}
-              >
-                <div
-                  className="flex h-11 w-11 items-center justify-center rounded-xl"
-                  style={{
-                    background: "var(--color-surface-elevated)",
-                    color: "var(--color-accent)",
-                  }}
-                >
-                  <Icon size={22} />
-                </div>
-                <div className="flex flex-col gap-3">
-                  <h3
-                    className="text-lg font-semibold"
-                    style={{ color: "var(--color-foreground)" }}
-                  >
-                    {s.title}
-                  </h3>
-                  <p
-                    className="text-sm leading-relaxed"
-                    style={{ color: "var(--color-muted)" }}
-                  >
-                    {s.description}
-                  </p>
-                </div>
-              </div>
-            );
-          })}
+          {/* Custom AI / RAG */}
+          <div
+            className="flex flex-col justify-between gap-6 rounded-2xl border p-8"
+            style={{
+              background: "var(--color-background)",
+              borderColor: "var(--color-border)",
+            }}
+          >
+            <SearchMockup />
+            <div className="flex flex-col gap-2">
+              <h3 className="text-lg font-semibold" style={{ color: "var(--color-foreground)" }}>
+                Custom AI Solutions
+              </h3>
+              <p className="text-sm leading-relaxed" style={{ color: "var(--color-muted)" }}>
+                AI that knows your business data. Custom knowledge bases and document Q&amp;A that give real answers.
+              </p>
+            </div>
+          </div>
+
+          {/* AI Strategy */}
+          <div
+            className="flex flex-col justify-between gap-6 rounded-2xl border p-8"
+            style={{
+              background: "var(--color-background)",
+              borderColor: "var(--color-border)",
+            }}
+          >
+            <RoadmapMockup />
+            <div className="flex flex-col gap-2">
+              <h3 className="text-lg font-semibold" style={{ color: "var(--color-foreground)" }}>
+                AI Strategy
+              </h3>
+              <p className="text-sm leading-relaxed" style={{ color: "var(--color-muted)" }}>
+                Clear roadmaps for AI adoption. I audit your stack, find high-impact opportunities, and build an implementation plan.
+              </p>
+            </div>
+          </div>
 
           {/* CTA card */}
           <div
